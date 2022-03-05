@@ -1,0 +1,62 @@
+<!Doctype html> 
+<html> 
+<head> 
+<meta charset="utf-8"> 	
+<meta name="author" content="abinnq" />
+<meta name="copyright" content="abinnq" />
+<title>abinnq</title> 
+<style>
+*{ margin:0; padding:0; list-style:none; font-family:"\5FAE\8F6F\96C5\9ED1";}
+#resume_small{ width:128px; height:128px; position:relative; z-index:2;}
+#mark{ display:none; background:rgba(249,241,9,0.5); width:36px; height:36px; position:absolute; left:0; top:0; border-radius:50%;}
+#resume_big{display:none; border:1px solid yellow; width:148px; height:148px; position:absolute; left:40%; top:1%; z-index:2; overflow:hidden; border-radius:50%;}
+#bigImg{ position:absolute;left:0;top:0}
+</style>
+<script>
+window.onload=function(){
+	var oResume_small=document.getElementById('resume_small');
+	var oMark=document.getElementById('mark');
+	var oResume_big=document.getElementById('resume_big');
+	var oBigImg=document.getElementById('bigImg');
+	oResume_small.onmouseover=function(){
+		oMark.style.display='block';
+		oResume_big.style.display='block';
+	};
+	oResume_small.onmouseout=function(){
+		oMark.style.display='none';
+		oResume_big.style.display='none';
+	};
+	oResume_small.onmousemove=function(ev){
+		var oEvt=ev||event;
+		var l=oEvt.clientX-oMark.offsetWidth/2;
+		var t=oEvt.clientY-oMark.offsetHeight/2;
+		if(l<0){l=0;}
+		if(l>oResume_small.offsetWidth-oMark.offsetWidth){
+			l=oResume_small.offsetWidth-oMark.offsetWidth;
+		}
+		if(t<0){t=0;}
+		if(t>oResume_small.offsetHeight-oMark.offsetHeight){
+			t=oResume_small.offsetHeight-oMark.offsetHeight;
+		}
+		oMark.style.left=l+'px';
+		oMark.style.top=t+'px';
+
+		oBigImg.style.left=-oMark.offsetLeft/(oResume_small.offsetWidth-oMark.offsetWidth)*(oBigImg.offsetWidth-oResume_big.offsetWidth)+'px';
+		oBigImg.style.top=-oMark.offsetTop/(oResume_small.offsetHeight-oMark.offsetHeight)*(oBigImg.offsetHeight-oResume_big.offsetHeight)+'px';
+	};
+}; 
+</script>
+</head>
+
+<body>
+   	<div id="bigme">
+		<div id="resume_small">
+			<img src="../images/OSX.png">
+			<div id="mark"></div> 
+		</div>
+		<div id="resume_big">
+			<img src="../images/OSXbig.png" id="bigImg">	
+		</div>
+	</div>	
+</body>
+</html>

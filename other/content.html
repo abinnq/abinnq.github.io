@@ -1,0 +1,134 @@
+<!Doctype html> 
+<html> 
+<head> 
+<meta charset="utf-8"> 	
+<meta name="author" content="abinnq" />
+<meta name="copyright" content="abinnq" />
+<title>abinnq</title> 
+<style>
+*{margin:0;padding:0;list-style:none;}
+
+
+#ul1{ position:relative;width:120px; height:160px; margin:150px auto;
+	transform-style:preserve-3d;
+	transform:perspective(800px) rotateX(-15deg) rotateY(0deg);
+}
+#ul1 li{ position:absolute;left:0;top:0;width:100%; height:100%; transition:1s all ease; box-shadow:0 0 10px  #fff; border-radius:10px; overflow:hidden;  background:rgba(0,0,0,0.5); cursor:default;}
+#ul1 li img{width:100px; margin-left:10px;}
+#ul1 li span{font-family:"\9ED1\4F53-\7B80"; text-align:center; display:block; font-size:14px;color:#fff; width:100%;  font-weight:599;}
+</style>
+<script>
+window.onload = function(){
+	var oUl = document.getElementById("ul1");
+	var aLi = oUl.children;
+	var len = aLi.length;
+	for(var i = 0; i < len; i++){
+		aLi[i].style.transition = "1s all ease " + (len - i)*200 +"ms"
+		aLi[i].style.transform = "rotateY("+360/len*i+"deg) translateZ(200px)";
+	}
+	aLi[0].addEventListener("transitionend",function(){		 
+		for(var i = 0; i < len; i++){
+			var d = 360/len*i;
+			if(d>180){
+				d = 360 - d;
+			}
+			d = 180 - d;
+			var scale = d/180;
+			scale < 0.3 && (scale = 0.3);
+			// aLi[i].style.opacity = scale; 	
+		}	
+	},false);
+	var y = 0;
+	var x = 150;
+	var speedX = 0;
+	var speedY = 0;
+	var lastX = 0;
+	var lastY = 0;
+	var timer = null;
+	var count = 0;
+	oUl.onmousedown = function(ev){
+		clearInterval(timer);
+		var disX = ev.clientX - y;
+		var disY = ev.clientY - x;
+		document.onmousemove = function(ev){
+			y = ev.clientX - disX;
+			x = ev.clientY - disY;
+			if(x > 600){
+				x = 600;
+			} else if(x < -600){
+				x = -600;	
+			}
+			speedX = x - lastX;
+			speedY = y - lastY;
+			lastX = x;
+			lastY = y;		
+			oUl.style.transform = "perspective(800px) rotateX("+-x/10+"deg) rotateY("+y/10+"deg)";
+		};
+		
+		document.onmouseup = function(){
+			document.onmousemove = null;
+			document.onmouseup = null;
+			
+			clearInterval(timer);
+			timer = setInterval(function(){
+				
+				x += speedX;
+				y += speedY;
+				
+				speedX *= 0.95;
+				speedY *= 0.95;
+				if(Math.abs(speedX) < 1){
+					speedX = 0;
+				}
+				if(Math.abs(speedY) < 1){
+					speedY = 0;
+				}
+				if(speedX == 0&& speedY == 0){
+					clearInterval(timer);
+				}
+				document.title = count++;
+				oUl.style.transform = "perspective(800px) rotateX("+-x/10+"deg) rotateY("+y/10+"deg)"
+				
+			},30);
+			
+			
+		};
+		
+		return false;	
+	};
+	
+	
+
+};
+
+</script>
+</head>
+
+<body>
+<div id=div1>
+<ul id="ul1">
+	<li>
+		<img src="../images/icon/18.png">
+		<span>phone</span>
+	</li>
+	<li>
+		<img src="../images/icon/9.png">
+		<span>qq</span>
+	</li>
+	<li>
+		<img src="../images/icon/16.png">
+		<span>abinnq</span>
+		<span>@gmail.com</span>
+	</li>
+	<li>
+		<img src="../images/icon/17.png">
+		<span>shanghai</span>
+	</li>
+	<li>
+		<img src="../images/icon/19.png">
+		<span>weibo</span>
+	</li>
+</ul>
+</div>
+</body>
+</html>

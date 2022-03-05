@@ -1,0 +1,64 @@
+<!Doctype html> 
+<html> 
+<head> 
+<meta charset="utf-8"> 	
+<meta name="author" content="abinnq" />
+<meta name="copyright" content="abinnq" />
+<title>abinnq</title> 
+<style>
+*{ margin:0; padding:0; list-style:none; font-family:"\9ED1\4F53-\7B80";}
+ul{font-size:14px;color:#373e46; font-weight:599; width:450px; margin:0 auto; margin-top:10px; margin-bottom:40px;}
+ul li{line-height:20px;}
+h3{font-size:16px; margin-top:5px; margin-bottom:5px; color:#000;}
+</style>
+<script>
+	 
+</script>
+</head>
+
+<body>
+  	<ul>
+  		<li>Mac桌面使用原生JavaScript进行开发，将一些常用的函数和方法进行封装</li>
+  		<li>为了更好的体验浏览效果请在全屏模式下浏览，建议使用chrome</li>
+  		<li>作者没有用过Mac，根据几张桌面截图，还有很多需要改进的地方...</li>
+  		<li><h3>1.设置网站的图标</h3></li>
+  		<li> 网站标题上设置了ico图标</li>
+  		<li><h3>2.桌面文件夹图标</h3></li>
+  		<li> (1) 根据可视区的高度进行布局转换，计算出每个图标的Left和Top值</li>
+  		<li> (2) 添加拖拽:判断距离最近的图标，然后互换Left和Top值</li>
+  		<li> (3) 模仿Mac系统添加鼠标双击事件，打开文件夹</li>
+  		<li><h3>3.底部仿Mac菜单</h3></li>
+  		<li> (1) 计算鼠标到每个图标中心的距离，根据比例设置每个图标的宽高</li>
+  		<li> (2) 致敬乔帮主</li>
+  		<li><h3>4.桌面天气挂件</h3></li>
+  		<li> (1) 用Jsonp根据接口实现跨域请求天气信息</li>
+  		<li> (2) 根据Select选择城市，显示当前城市天气预报</li>
+  		<li> (3) 挂件根据可视区进行拖拽限定及吸附功能，添加移入关闭功能</li>
+  		<li><h3>5.主题设置</h3></li>
+  		<li>打开相对应弹出框，选择图片即可更换桌面壁纸</li>
+   		<li><h3>6.桌面弹出框</h3></li>
+  		<li> (1) 左上角：关闭 居中 最大化 按钮</li>
+  		<li> (2) 打开与关闭具有淡入淡出效果，尺寸的改变具有缓冲运动效果</li>
+  		<li> (3) 四周及四角都可以拉扯放大和缩小，根据可视区范围限定</li>
+  		<li> (4) 鼠标双击弹出框灰色头部，智能的选择窗口放大或缩小居中</li>
+  		<li> (5) 每次操作的窗口层级均为最高</li> 		
+  		<li><h3>7.头部左侧菜单</h3></li>
+  		<li> (1) 单击Logo可关闭或开启左侧菜单</li>
+  		<li> (2) 网页尺寸缩放一定尺寸，左侧菜单自动关闭</li> 		
+  		<li><h3>8.头部右侧菜单</h3></li>
+  		<li> (1) 闪烁的微信图标单击可关闭，并显示机主信息</li>
+  		<li> (2) 单击音量图标即可关闭背景音乐，有相对应的关闭效果</li>
+  		<li> (3) 根据日期对象获得系统时间并设置</li>
+      <li><h3>9.word版简历下载</h3></li>
+      <li> 机主信息About页面提供本人word版简历下载</li>
+  		<li><h3>10.自定义右键菜单</h3></li>
+  		<li> (1) oncontextmenu事件进行个性化设置右键菜单</li>
+  		<li> (2) 刷新：改变页面图标opacity值，实现视觉效果</li>
+  		<li> (3) 改列方式：通过布局转换桌面图标横向和纵向的改变</li>
+  		<li> (4) 查看：提供大图标、中图标、小图标的改变</li>
+  		<li> (5) 主题设置：打开桌面壁纸设置弹出窗</li>
+  		<li> (6) 新建文件夹：Dom的添加，并随机系统自带文件夹图标地址</li>
+  		<li> (7) 机主信息：打开机主信息弹出窗</li>
+  	</ul> 
+</body>
+</html>
